@@ -10,6 +10,22 @@ the reasons for the required changes.
 
 ## System requirements
 
-TBD
+These samples have been developed and run on 4.4.0-38-generic #57-Ubuntu SMP system (Ubuntu Xenial release). Since this is a much more modern version of the operating than was available during the aleph1's paper publication time, features to mitigate against buffer overflow attacks have been implemented. These include non-executable stack, and address space layout randomization (ASLR).
+
+The following commands can be used to modify the compiled binary stack eXecute bit and ASLR:
+```
+$ execstack -q shellcode     # ~~> check whether stack is executable?
+- shellcode  
+$ execstack -c shellcode     # ~~> the '-' indicated stack is not executable, so change this
+X shellcode
+
+```
+The ASLR can also be annoying, in particular when getting up to speed. This can be disabled conveniently with the following command which will open a new shell with ASLR disabled:
+```
+$ cat /proc/sys/kernel/randomize_va_space     # check if ASLR is enabled?
+2
+$ setarch `uname -m` -R /bin/bash             # 2 indicated full randomization, so launch new shell with no ASLR
+```
+
 
 ## Examples
