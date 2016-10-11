@@ -26,6 +26,10 @@ $ cat /proc/sys/kernel/randomize_va_space     # check if ASLR is enabled?
 2
 $ setarch `uname -m` -R /bin/bash             # 2 indicated full randomization, so launch new shell with no ASLR
 ```
+Alternativey you can just run the program (without shell) with disabled ASLR:
+```
+$ setarch `uname -m` -R shellcode
+```
 ### Note on using gdb
 If you're running your executables within gdb, you will see that stack addresses will remain constant between runs. This is because gdb ensures a consistent evironment to aid debugging. This may throw you off, but making you think that since the pointers you see are constant no ASLR is in use. Wrong!
 
