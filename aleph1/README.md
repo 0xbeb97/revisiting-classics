@@ -24,7 +24,7 @@ The ASLR can also be annoying, in particular when getting up to speed. This can 
 ```
 $ cat /proc/sys/kernel/randomize_va_space     # check if ASLR is enabled?
 2
-$ setarch `uname -m` -R /bin/bash             # 2 indicated full randomization, so launch new shell with no ASLR
+$ setarch `uname -m` -R /bin/bash             # 2 == full randomization; launch new shell with no ASLR
 ```
 Alternativey you can just run the program (without shell) with disabled ASLR:
 ```
